@@ -1,82 +1,41 @@
-import React, { Component } from 'react'
-import { Alert, View, Button, Platform, StyleSheet, Text, TouchableHighlight,
-  TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback
-} from 'react-native'
+
+import React, { Component } from 'react';
+import { Text, View, YellowBox } from 'react-native';
+import { createStackNavigator  } from 'react-navigation';
+import Logo from './src/components/logo'
+import Home from './src/components/home'
+import DetailPage from './src/components/detailPage'
+// import DetailPage2 from './src/components/detailPage2'
+
+YellowBox.ignoreWarnings([ 'warning: isMounted(...)is deprecated', 'Module RCTImageLoader' ] )
+
+const RootStack = createStackNavigator(
+  {
+    Logo: Logo,
+    Home: Home,
+    DetailPage: DetailPage,
+    // DetailPage2,
+  },
+  {
+    initialRouteName: 'Logo',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#fff'
+      },
+      headerTintColor: '#000',
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      }
+    }
+  },
+  
+)
 
 export default class App extends Component {
-  _onPressButton() {
-    Alert.alert('You tapped the button!')
-  }
-  _onLongPressButton() {
-    Alert.alert('You long-pressed the button!')
-  }
-
   render() {
     return (
-      <View style={styles.container}>
-      {/* TouchableHighlight */}
-        <TouchableHighlight
-          onPress={this._onPressButton}
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>TouchableHighlight</Text>
-          </View>
-        </TouchableHighlight>
-
-        {/* TouchableOpacity */}
-        <TouchableOpacity onPress={this._onPressButton} >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>TouchableOpacity</Text>
-          </View>
-        </TouchableOpacity>
-
-        {/* TouchableNativeFeedback */}
-        <TouchableNativeFeedback 
-          onPress={this._onPressButton}
-          background={ Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : '' }
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>TouchableNativeFeedback</Text>
-          </View>
-        </TouchableNativeFeedback>
-
-        {/* TouchableWithoutFeedback */}
-        <TouchableWithoutFeedback onPress={this._onPressButton}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>TouchableWithoutFeedback</Text>
-          </View>
-        </TouchableWithoutFeedback>
-
-        {/* TouchableHighlight */}
-        <TouchableHighlight
-          onPress={this._onPressButton}
-          onLongPress={this._onLongPressButton}
-          underlayColor='white'
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Tochable with long Press</Text>
-          </View>
-        </TouchableHighlight>
-        
-      </View>
+      <RootStack />
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 60,
-    alignItems: 'center',
-  },
-  button: {
-    marginBottom: 30,
-    width: 260,
-    alignItems: 'center',
-    backgroundColor: '#2196F3',
-  },
-  buttonText: {
-    padding: 20,
-    color: 'white'
-  }
-})
