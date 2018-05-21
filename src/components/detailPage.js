@@ -3,10 +3,14 @@ import { View, Text, Button } from 'react-native';
 import Home from './home'
 
 export default class DetailPage extends Component {
-  static navigationOptions = ({ navigation }) => {
+  static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
     return {
-      title: params ? params.itemId : 'no-id'
+      title: params ? params.itemId : 'no-id',
+      headerStyle: {
+        backgroundColor: navigationOptions.headerTintColor,
+      },
+      headerTintColor: navigationOptions.headerStyle.backgroundColor,
     }
   }
   render() {

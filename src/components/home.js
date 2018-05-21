@@ -1,9 +1,31 @@
 import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import DetailPage from './detailPage'
+import DetailPage2 from './detailPage2'
+
+class LogoTitle extends Component {
+  render() {
+    return (
+      <View style={{ width: 100 }}>
+        <Button
+          title='Home'
+        />
+      </View>
+    )
+  }
+}
+
 export default class Home extends Component {
   static navigationOptions = {
-    title: 'Home',
+    headerTitle: <LogoTitle />,
+    headerRight: (
+      <Button
+        onPress={ () => alert('This is a button') }
+        title='info'
+        color='#f0f'
+      />
+    )
+    // title: 'Home',
     // headerStyle: {
     //   backgroundColor: '#ccc'
     // },
@@ -23,6 +45,12 @@ export default class Home extends Component {
               itemId: 86,
               otherParam: 'anything you want here'
             })
+          } }
+        />
+        <Button
+          title='go to detail2'
+          onPress={ () => {
+            this.props.navigation.push('DetailPage2')
           } }
         />
       </View>
