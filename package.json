@@ -1,5 +1,5 @@
 {
-  "name": "copyNative",
+  "name": "basicNative",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.55.4",
+    "react-native-vector-icons": "^4.0.0",
     "react-navigation": "^2.0.1"
   },
   "devDependencies": {
