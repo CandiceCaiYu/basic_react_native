@@ -4,6 +4,7 @@ import {
   Text,
   Button,
   ActivityIndicator,
+  DatePickerIOS,
   StyleSheet
 } from 'react-native'
 
@@ -21,9 +22,14 @@ import {
         {/* Button(按钮) */}
         <Button 
           title="click"
+          color="#f0f"
+          disabled
           onPress={() => alert('Hello World!')}
         />
-        
+        {/* DaterPickerIOS */}
+        {/* <DaterPickerIOS 
+          data={new Date()}
+        /> */}
        </View>
      )
    }
