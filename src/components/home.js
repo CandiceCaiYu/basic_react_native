@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import DetailPage from './detailPage'
 import DetailPage2 from './detailPage2'
 
 class LogoTitle extends Component {
@@ -41,7 +40,7 @@ export default class Home extends Component {
         <Button
           title='go to detail'
           onPress={ () => {
-            this.props.navigation.navigate('DetailPage', {
+            this.props.navigation.navigate('DetailPage2', {
               itemId: 86,
               otherParam: 'anything you want here'
             })

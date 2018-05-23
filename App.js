@@ -4,7 +4,6 @@ import { Text, View, YellowBox } from 'react-native';
 import { createStackNavigator  } from 'react-navigation';
 import Logo from './src/components/logo'
 import Home from './src/components/home'
-import DetailPage from './src/components/detailPage'
 // import DetailPage2 from './src/components/detailPage2'
 
 YellowBox.ignoreWarnings([ 'warning: isMounted(...)is deprecated', 'Module RCTImageLoader' ] )
@@ -13,7 +12,6 @@ const RootStack = createStackNavigator(
   {
     Logo: Logo,
     Home: Home,
-    DetailPage: DetailPage,
     // DetailPage2,
   },
   {
