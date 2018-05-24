@@ -30,7 +30,7 @@ export default class Logo extends Component {
             <Button
               title= '登录'
               // onPress={this._onPressBtn}
-              onPress={ () => this.props.navigation.push('Home') }
+              onPress={ () => this.props.navigation.navigate('Home') }
             />
           </View>
           
