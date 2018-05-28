@@ -1,57 +1,48 @@
-import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet, AppRegistry } from 'react-native';
-import DetailPage2 from './detailPage2'
+import React, { Component } from 'react'
+import {
+  View,
+  ScrollView,
+  Text,
+} from 'react-native'
+import {
+  Button,
+  ButtonGroup,
+} from 'react-native-elements'
+import AllNativeAPI from './allNativeApI'
+import ComponentsElements from './componentsElements'
 
-class LogoTitle extends Component {
-  render() {
-    return (
-      <View style={{ width: 100 }}>
-        <Button
-          title='Home'
-        />
-      </View>
-    )
-  }
-}
+import ComponentsNative from './componentsNative'
 
+const buttons = ['NativeAPI', 'Native']
 export default class Home extends Component {
-  static navigationOptions = {
-    headerTitle: <LogoTitle />,
-    headerRight: (
-      <Button
-        onPress={ () => alert('This is a button') }
-        title='info'
-        color='#f0f'
-      />
-    )
-    // title: 'Home',
-    // headerStyle: {
-    //   backgroundColor: '#ccc'
-    // },
-    // headerTintColor: '#000',
-    // headerTitleStyle: {
-    //   fontWeight: 'bold'
-    // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedIndex: 0,
+    }
+    this.updateIndex = this.updateIndex.bind(this)
+  }
+  updateIndex(selectedIndex) {
+    this.setState({ selectedIndex })
   }
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home page</Text>
-        <Button
-          title='go to detail'
-          onPress={ () => {
-            this.props.navigation.navigate('DetailPage2', {
-              itemId: 86,
-              otherParam: 'anything you want here'
-            })
-          } }
+      <View>
+        <ButtonGroup 
+          containerStyle={{height: 50, marginLeft:0, marginRight:0, marginTop:0, marginBottom:0}}
+          onPress={this.updateIndex}
+          selectedIndex={this.state.selectedIndex}
+          buttons={buttons}
+          buttonStyle={{ backgroundColor: '#0f0' }}
+          selectedButtonStyle={{ backgroundColor: '#ff0' }}
+          
         />
-        <Button
-          title='go to detail2'
-          onPress={ () => {
-            alert(AppRegistry.getAppKeys())
-          } }
-        />
+        {
+          this.state.selectedIndex == 0 
+          ? (<AllNativeAPI />)
+          : (<ComponentsNative />)
+
+        }
       </View>
     )
   }
